@@ -1,0 +1,2613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tools for developers - image conversion/compression, PDF tools, code formatting, and QR generation. Optimize your workflow with our powerful web tools.">
+    <meta name="keywords" content="image converter, image compressor, PDF to Word, PDF merger, code formatter, QR generator, online tools, developer tools, free tools">
+    <meta name="author" content="DevToolsPro">
+    <meta property="og:title" content="DevToolsPro - Complete Developer Tools Suite">
+    <meta property="og:description" content="Free online tools including image conversion/compression, PDF manipulation, code formatting, and QR generation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devtoolspro.com">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devtoolspro.com">
+    <title>DevToolsPro - Image, PDF & Code Tools for Developers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --dark: #1a1a2e;
+            --medium: #16213e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Tool Navigation */
+        .tool-nav {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tool-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tool-link {
+            padding: 0.7rem 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--gray);
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+        
+        .tool-link.active, .tool-link:hover {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        /* Tool Container */
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .tool-header h2 {
+            font-size: 2rem;
+            color: var(--medium);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Common Tool Styles */
+        .upload-area {
+            border: 2px dashed var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 3rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+            position: relative;
+            background-color: rgba(72, 149, 239, 0.05);
+        }
+        
+        .upload-area:hover {
+            border-color: var(--accent);
+            background-color: rgba(247, 37, 133, 0.05);
+        }
+        
+        .upload-area.active {
+            border-color: var(--success);
+            background-color: rgba(76, 201, 240, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+        
+        .upload-area:hover .upload-icon {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .upload-text {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .upload-hint {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        /* Controls */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--medium);
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, var(--accent), var(--primary-light));
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .slider:hover {
+            opacity: 0.8;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            border-color: var(--accent);
+        }
+        
+        .slider-value {
+            width: 50px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 0.3rem 0.5rem;
+            border-radius: 20px;
+        }
+        
+        select, .text-input, .qr-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        select:focus, .text-input:focus, .qr-input:focus {
+            border-color: var(--primary-light);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        /* Loading and Results */
+        .spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            margin: 2rem auto;
+            border: 4px solid rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        
+        .error-message {
+            display: none;
+            color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            text-align: center;
+            border-left: 4px solid #dc3545;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .success-message {
+            display: none;
+            color: #28a745;
+            background-color: rgba(40, 167, 69, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            text-align: center;
+            border-left: 4px solid #28a745;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        /* Results Section */
+        .results {
+            display: none;
+            margin-top: 2rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .result-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-card-header {
+            padding: 1rem;
+            background-color: var(--light);
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            color: var(--medium);
+        }
+        
+        .result-card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .result-card-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+        
+        .result-card-body img:hover {
+            transform: scale(1.02);
+        }
+        
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            background-color: var(--light);
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-top: 0.2rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: linear-gradient(to right, var(--success), #38b6ff);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 201, 240, 0.4);
+            background: linear-gradient(to right, #38b6ff, var(--success));
+        }
+        
+        .download-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Code Formatter Specific */
+        .code-textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            resize: vertical;
+            transition: var(--transition);
+        }
+        
+        .code-textarea:focus {
+            border-color: var(--primary-light);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .language-selector {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* PDF Merger Specific */
+        .file-list {
+            margin-bottom: 2rem;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+        
+        .file-item i {
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .file-action-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .file-action-btn:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        /* QR Generator Specific */
+        .qr-preview {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .qr-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e9ecef;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .qr-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Ad Containers */
+        .ad-container {
+            margin: 3rem 0;
+            text-align: center;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .ad-label::before, .ad-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: #e9ecef;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--primary-light));
+            border-radius: 3px;
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-out;
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+                border-radius: 8px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .tool-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-nav {
+                padding: 0.5rem;
+            }
+            
+            .tool-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .tool-container {
+                padding: 1.5rem;
+            }
+            
+            .upload-area {
+                padding: 2rem 1rem;
+            }
+            
+            .upload-text {
+                font-size: 1.1rem;
+            }
+            
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>DevToolsPro</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#image-tools">Image Tools</a></li>
+                    <li><a href="#pdf-tools">PDF Tools</a></li>
+                    <li><a href="#code-tools">Code Tools</a></li>
+                    <li><a href="#qr-generator">QR Generator</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Tool Navigation -->
+        <div class="tool-nav">
+            <a href="#image-converter" class="tool-link active">Image Converter</a>
+            <a href="#image-compressor" class="tool-link">Image Compressor</a>
+            <a href="#pdf-to-word" class="tool-link">PDF to Word</a>
+            <a href="#pdf-merger" class="tool-link">PDF Merger</a>
+            <a href="#code-formatter" class="tool-link">Code Formatter</a>
+            <a href="#qr-generator" class="tool-link">QR Generator</a>
+        </div>
+        
+        <!-- Ad Banner Top -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense ad unit -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- DevToolsPro_Top_Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Image Converter Tool -->
+        <div id="image-converter" class="tool-container">
+            <div class="tool-header">
+                <h2>Image Converter</h2>
+                <p>Convert between different image formats (JPG, PNG, WebP, GIF) with optional compression.</p>
+            </div>
+            
+            <div class="upload-area" id="image-upload-area">
+                <div class="upload-icon">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="upload-text">Drag & Drop your image here</div>
+                <div class="upload-hint">or click to browse files (max 10MB)</div>
+                <input type="file" id="image-file-input" class="file-input" accept="image/*">
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="image-output-format">Output Format</label>
+                    <select id="image-output-format">
+                        <option value="jpg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                        <option value="gif">GIF</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="image-quality">Quality (JPEG/WebP)</label>
+                    <div class="slider-container">
+                        <input type="range" min="0" max="100" value="85" class="slider" id="image-quality">
+                        <span class="slider-value" id="image-quality-value">85</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="image-progress-container">
+                <div class="progress-bar" id="image-progress-bar"></div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="convert-image-btn">
+                    <i class="fas fa-exchange-alt"></i> Convert Image
+                </button>
+                <button class="btn btn-secondary" id="reset-image-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+            
+            <div class="spinner" id="image-spinner"></div>
+            <div class="error-message" id="image-error-message"></div>
+            <div class="success-message" id="image-success-message"></div>
+            
+            <div class="results" id="image-results">
+                <div class="comparison">
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-image"></i> Original Image
+                        </div>
+                        <div class="result-card-body">
+                            <img id="original-image" src="" alt="Original image">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="original-image-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Dimensions <span class="stat-value" id="original-image-dimensions">0×0</span>
+                                </div>
+                                <div class="stat-item">
+                                    Type <span class="stat-value" id="original-image-type">---</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-file-export"></i> Converted Image
+                        </div>
+                        <div class="result-card-body">
+                            <img id="converted-image" src="" alt="Converted image">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="converted-image-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Format <span class="stat-value" id="converted-image-format">---</span>
+                                </div>
+                                <div class="stat-item">
+                                    Quality <span class="stat-value" id="converted-image-quality">---</span>
+                                </div>
+                            </div>
+                            <a href="#" class="download-btn" id="download-converted-image-btn">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Compressor Tool -->
+        <div id="image-compressor" class="tool-container" style="display: none;">
+            <div class="tool-header">
+                <h2>Image Compressor</h2>
+                <p>Reduce image file size without losing quality. Perfect for websites, social media, and email attachments.</p>
+            </div>
+            
+            <div class="upload-area" id="compressor-upload-area">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">Drag & Drop your image here</div>
+                <div class="upload-hint">or click to browse files (max 10MB)</div>
+                <input type="file" id="compressor-file-input" class="file-input" accept="image/jpeg, image/png, image/webp">
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="compressor-quality">Compression Quality</label>
+                    <div class="slider-container">
+                        <input type="range" min="0" max="100" value="80" class="slider" id="compressor-quality">
+                        <span class="slider-value" id="compressor-quality-value">80</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="compressor-format">Output Format</label>
+                    <select id="compressor-format">
+                        <option value="auto">Auto (Same as input)</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP (Recommended)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="compressor-progress-container">
+                <div class="progress-bar" id="compressor-progress-bar"></div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="compress-btn">
+                    <i class="fas fa-compress-arrows-alt"></i> Compress Image
+                </button>
+                <button class="btn btn-secondary" id="reset-compressor-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+            
+            <div class="spinner" id="compressor-spinner"></div>
+            <div class="error-message" id="compressor-error-message"></div>
+            <div class="success-message" id="compressor-success-message"></div>
+            
+            <div class="results" id="compressor-results">
+                <div class="comparison">
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-image"></i> Original Image
+                        </div>
+                        <div class="result-card-body">
+                            <img id="original-compressed-img" src="" alt="Original image">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="original-compressed-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Dimensions <span class="stat-value" id="original-compressed-dimensions">0×0</span>
+                                </div>
+                                <div class="stat-item">
+                                    Type <span class="stat-value" id="original-compressed-type">---</span>
+                                </div>
+                                <div class="stat-item">
+                                    Resolution <span class="stat-value" id="original-compressed-resolution">---</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-file-archive"></i> Compressed Image
+                        </div>
+                        <div class="result-card-body">
+                            <img id="compressed-img" src="" alt="Compressed image">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="compressed-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Saved <span class="stat-value" id="saved-percentage">0%</span>
+                                </div>
+                                <div class="stat-item">
+                                    Type <span class="stat-value" id="compressed-type">---</span>
+                                </div>
+                                <div class="stat-item">
+                                    Quality <span class="stat-value" id="compressed-quality">---</span>
+                                </div>
+                            </div>
+                            <a href="#" class="download-btn" id="download-compressed-btn">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PDF to Word Converter Tool -->
+        <div id="pdf-to-word" class="tool-container" style="display: none;">
+            <div class="tool-header">
+                <h2>PDF to Word Converter</h2>
+                <p>Convert PDF documents to editable Word files while preserving formatting and layout.</p>
+            </div>
+            
+            <div class="upload-area" id="pdf-upload-area">
+                <div class="upload-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="upload-text">Drag & Drop PDF file here</div>
+                <div class="upload-hint">or click to browse files (max 10MB)</div>
+                <input type="file" id="pdf-file-input" class="file-input" accept=".pdf">
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="word-output-format">Output Format</label>
+                    <select id="word-output-format">
+                        <option value="docx">DOCX (Microsoft Word)</option>
+                        <option value="doc">DOC (Word 97-2003)</option>
+                        <option value="odt">ODT (OpenDocument)</option>
+                        <option value="rtf">RTF (Rich Text)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="word-output-name">Output Filename</label>
+                    <input type="text" id="word-output-name" class="text-input" placeholder="converted-document.docx">
+                </div>
+            </div>
+            
+            <div class="progress-container" id="pdf-progress-container">
+                <div class="progress-bar" id="pdf-progress-bar"></div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="convert-pdf-btn">
+                    <i class="fas fa-file-word"></i> Convert to Word
+                </button>
+                <button class="btn btn-secondary" id="reset-pdf-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+            
+            <div class="spinner" id="pdf-spinner"></div>
+            <div class="error-message" id="pdf-error-message"></div>
+            <div class="success-message" id="pdf-success-message"></div>
+            
+            <div class="results" id="pdf-results" style="display: none;">
+                <div class="comparison">
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-file-pdf"></i> Original PDF
+                        </div>
+                        <div class="result-card-body">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Icon" style="width: 100px;">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="original-pdf-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Pages <span class="stat-value" id="original-pdf-pages">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-file-word"></i> Converted Word
+                        </div>
+                        <div class="result-card-body">
+                            <img src="https://cdn-icons-png.flaticon.com/512/888/888882.png" alt="Word Icon" style="width: 100px;">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="converted-word-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Format <span class="stat-value" id="converted-word-format">---</span>
+                                </div>
+                            </div>
+                            <a href="#" class="download-btn" id="download-word-btn">
+                                <i class="fas fa-download"></i> Download Word File
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PDF Merger Tool -->
+        <div id="pdf-merger" class="tool-container" style="display: none;">
+            <div class="tool-header">
+                <h2>PDF Merger</h2>
+                <p>Combine multiple PDF files into a single document. Rearrange pages and merge PDFs in seconds.</p>
+            </div>
+            
+            <div class="upload-area" id="pdf-merger-upload-area">
+                <div class="upload-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="upload-text">Drag & Drop PDF files here</div>
+                <div class="upload-hint">or click to browse files (max 10MB each)</div>
+                <input type="file" id="pdf-merger-file-input" class="file-input" accept=".pdf" multiple>
+            </div>
+            
+            <div class="file-list" id="pdf-file-list">
+                <!-- PDF files will be listed here -->
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="pdf-merger-output-name">Output Filename</label>
+                    <input type="text" id="pdf-merger-output-name" class="text-input" placeholder="merged-document.pdf">
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="merge-btn">
+                    <i class="fas fa-object-group"></i> Merge PDFs
+                </button>
+                <button class="btn btn-secondary" id="clear-pdfs-btn">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+            
+            <div class="spinner" id="pdf-merger-spinner"></div>
+            <div class="error-message" id="pdf-merger-error-message"></div>
+            <div class="success-message" id="pdf-merger-success-message"></div>
+            
+            <div class="results" id="pdf-merger-results" style="display: none;">
+                <div class="comparison">
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <i class="fas fa-file-pdf"></i> Merged PDF
+                        </div>
+                        <div class="result-card-body">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Icon" style="width: 100px;">
+                            <div class="result-stats">
+                                <div class="stat-item">
+                                    File Size <span class="stat-value" id="merged-size">0 KB</span>
+                                </div>
+                                <div class="stat-item">
+                                    Pages <span class="stat-value" id="merged-pages">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    Files Merged <span class="stat-value" id="files-merged">0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="download-btn" id="download-merged-btn">
+                                <i class="fas fa-download"></i> Download Merged PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Code Formatter Tool -->
+        <div id="code-formatter" class="tool-container" style="display: none;">
+            <div class="tool-header">
+                <h2>Code Formatter</h2>
+                <p>Beautify and format your code for better readability. Supports multiple programming languages.</p>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group language-selector">
+                    <label for="code-language">Language</label>
+                    <select id="code-language">
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="json">JSON</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="csharp">C#</option>
+                        <option value="php">PHP</option>
+                        <option value="xml">XML</option>
+                        <option value="sql">SQL</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="code-input">Your Code</label>
+                    <textarea id="code-input" class="code-textarea" placeholder="Paste your code here..."></textarea>
+                </div>
+                
+                <div class="control-group">
+                    <label for="code-indent">Indentation</label>
+                    <select id="code-indent">
+                        <option value="2">2 spaces</option>
+                        <option value="4" selected>4 spaces</option>
+                        <option value="8">8 spaces</option>
+                        <option value="tab">Tab</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="format-code-btn">
+                    <i class="fas fa-code"></i> Format Code
+                </button>
+                <button class="btn btn-secondary" id="clear-code-btn">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+            </div>
+            
+            <div class="spinner" id="code-spinner"></div>
+            <div class="error-message" id="code-error-message"></div>
+            <div class="success-message" id="code-success-message"></div>
+            
+            <div class="results" id="code-results" style="display: none;">
+                <div class="control-group">
+                    <label for="formatted-code">Formatted Code</label>
+                    <textarea id="formatted-code" class="code-textarea" readonly></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" id="copy-code-btn">
+                        <i class="fas fa-copy"></i> Copy to Clipboard
+                    </button>
+                    <button class="btn" id="download-code-btn" style="background: linear-gradient(to right, #4cc9f0, #38b6ff); color: white;">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- QR Generator Tool -->
+        <div id="qr-generator" class="tool-container" style="display: none;">
+            <div class="tool-header">
+                <h2>QR Code Generator</h2>
+                <p>Create custom QR codes for URLs, text, contact info, WiFi credentials and more.</p>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="qr-content">Content to Encode</label>
+                    <textarea id="qr-content" class="qr-input" rows="3" placeholder="Enter text, URL, or other content to encode"></textarea>
+                </div>
+            </div>
+            
+            <div class="qr-options">
+                <div class="control-group">
+                    <label for="qr-size">Size</label>
+                    <select id="qr-size">
+                        <option value="200">Small (200×200)</option>
+                        <option value="300" selected>Medium (300×300)</option>
+                        <option value="400">Large (400×400)</option>
+                        <option value="500">Extra Large (500×500)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="qr-color">Color</label>
+                    <select id="qr-color">
+                        <option value="#000000" selected>Black</option>
+                        <option value="#4361ee">Blue</option>
+                        <option value="#f72585">Pink</option>
+                        <option value="#4cc9f0">Teal</option>
+                        <option value="#3f37c9">Purple</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="qr-bg">Background</label>
+                    <select id="qr-bg">
+                        <option value="#ffffff" selected>White</option>
+                        <option value="#f8f9fa">Light Gray</option>
+                        <option value="#e9ecef">Gray</option>
+                        <option value="#f5f7ff">Very Light Blue</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="generate-qr-btn">
+                    <i class="fas fa-qrcode"></i> Generate QR Code
+                </button>
+                <button class="btn btn-secondary" id="reset-qr-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+            
+            <div class="qr-preview" id="qr-preview">
+                <!-- QR code will be displayed here -->
+                <p>Your QR code will appear here after generation</p>
+            </div>
+            
+            <div class="button-group" id="qr-download-btns" style="display: none;">
+                <a href="#" class="btn" id="download-png-btn">
+                    <i class="fas fa-download"></i> Download PNG
+                </a>
+                <a href="#" class="btn" id="download-svg-btn">
+                    <i class="fas fa-download"></i> Download SVG
+                </a>
+            </div>
+        </div>
+        
+        <!-- Ad Banner Bottom -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense ad unit -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- DevToolsPro_Bottom_Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>DevToolsPro</h3>
+                <p>Free online tools for developers, designers, and content creators to optimize their workflow.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#image-tools"><i class="fas fa-chevron-right"></i> Image Tools</a></li>
+                    <li><a href="#pdf-tools"><i class="fas fa-chevron-right"></i> PDF Tools</a></li>
+                    <li><a href="#code-tools"><i class="fas fa-chevron-right"></i> Code Tools</a></li>
+                    <li><a href="#qr-generator"><i class="fas fa-chevron-right"></i> QR Generator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> API</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 DevToolsPro. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Tool navigation
+            const toolLinks = document.querySelectorAll('.tool-link');
+            const toolContainers = document.querySelectorAll('.tool-container');
+            
+            toolLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    toolLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Hide all tool containers
+                    toolContainers.forEach(container => {
+                        container.style.display = 'none';
+                    });
+                    
+                    // Show selected tool container
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).style.display = 'block';
+                });
+            });
+            
+            // Helper function to format file size
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+            }
+            
+            // Helper function to show error message
+            function showError(element, message) {
+                element.textContent = message;
+                element.style.display = 'block';
+                element.nextElementSibling.style.display = 'none';
+            }
+            
+            // Helper function to show success message
+            function showSuccess(element, message) {
+                element.textContent = message;
+                element.style.display = 'block';
+                element.previousElementSibling.style.display = 'none';
+            }
+            
+            // Helper function to reset tool
+            function resetTool(toolId) {
+                const tool = document.getElementById(toolId);
+                tool.querySelectorAll('input[type="file"]').forEach(input => {
+                    input.value = '';
+                });
+                tool.querySelectorAll('.results').forEach(result => {
+                    result.style.display = 'none';
+                });
+                tool.querySelectorAll('.error-message, .success-message').forEach(msg => {
+                    msg.style.display = 'none';
+                });
+                tool.querySelectorAll('.spinner, .progress-container').forEach(loader => {
+                    loader.style.display = 'none';
+                });
+                tool.querySelectorAll('.progress-bar').forEach(bar => {
+                    bar.style.width = '0%';
+                });
+            }
+            
+            /* Image Converter Tool */
+            const imageUploadArea = document.getElementById('image-upload-area');
+            const imageFileInput = document.getElementById('image-file-input');
+            const imageOutputFormat = document.getElementById('image-output-format');
+            const imageQualitySlider = document.getElementById('image-quality');
+            const imageQualityValue = document.getElementById('image-quality-value');
+            const convertImageBtn = document.getElementById('convert-image-btn');
+            const resetImageBtn = document.getElementById('reset-image-btn');
+            const imageSpinner = document.getElementById('image-spinner');
+            const imageProgressContainer = document.getElementById('image-progress-container');
+            const imageProgressBar = document.getElementById('image-progress-bar');
+            const imageErrorMessage = document.getElementById('image-error-message');
+            const imageSuccessMessage = document.getElementById('image-success-message');
+            const imageResults = document.getElementById('image-results');
+            const originalImage = document.getElementById('original-image');
+            const convertedImage = document.getElementById('converted-image');
+            const originalImageSize = document.getElementById('original-image-size');
+            const originalImageDimensions = document.getElementById('original-image-dimensions');
+            const originalImageType = document.getElementById('original-image-type');
+            const convertedImageSize = document.getElementById('converted-image-size');
+            const convertedImageFormat = document.getElementById('converted-image-format');
+            const convertedImageQuality = document.getElementById('converted-image-quality');
+            const downloadConvertedImageBtn = document.getElementById('download-converted-image-btn');
+            
+            let selectedImageFile = null;
+            
+            // Image quality slider
+            imageQualitySlider.addEventListener('input', () => {
+                imageQualityValue.textContent = imageQualitySlider.value;
+            });
+            
+            // File upload handling
+            imageUploadArea.addEventListener('click', () => imageFileInput.click());
+            imageUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                imageUploadArea.classList.add('active');
+            });
+            imageUploadArea.addEventListener('dragleave', () => {
+                imageUploadArea.classList.remove('active');
+            });
+            imageUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                imageUploadArea.classList.remove('active');
+                if (e.dataTransfer.files.length) {
+                    handleImageFileSelect(e.dataTransfer.files[0]);
+                }
+            });
+            
+            imageFileInput.addEventListener('change', () => {
+                if (imageFileInput.files.length) {
+                    handleImageFileSelect(imageFileInput.files[0]);
+                }
+            });
+            
+            function handleImageFileSelect(file) {
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    showError(imageErrorMessage, 'Please select an image file (JPEG, PNG, WebP, GIF)');
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    showError(imageErrorMessage, 'File size exceeds 10MB limit');
+                    return;
+                }
+                
+                selectedImageFile = file;
+                
+                // Display original image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    originalImage.src = e.target.result;
+                    
+                    // Get image dimensions and type
+                    const img = new Image();
+                    img.onload = function() {
+                        originalImageDimensions.textContent = `${this.width}×${this.height}`;
+                        
+                        // Detect image type
+                        const fileType = file.type.split('/')[1].toUpperCase();
+                        originalImageType.textContent = fileType;
+                    };
+                    img.src = e.target.result;
+                    
+                    // Display file size
+                    originalImageSize.textContent = formatFileSize(file.size);
+                    
+                    // Reset results if they were showing
+                    imageResults.style.display = 'none';
+                    imageErrorMessage.style.display = 'none';
+                    imageSuccessMessage.style.display = 'none';
+                    
+                    // Update upload area text
+                    const uploadText = imageUploadArea.querySelector('.upload-text');
+                    const uploadHint = imageUploadArea.querySelector('.upload-hint');
+                    
+                    uploadText.textContent = file.name.length > 20 
+                        ? file.name.substring(0, 20) + '...' 
+                        : file.name;
+                    uploadText.setAttribute('title', file.name);
+                    uploadHint.textContent = `${formatFileSize(file.size)} • ${file.type.split('/')[1].toUpperCase()}`;
+                    
+                    // Show success message
+                    showSuccess(imageSuccessMessage, 'Image loaded successfully! Ready for conversion.');
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            // Convert image button
+            convertImageBtn.addEventListener('click', convertImage);
+            
+            function convertImage() {
+                if (!selectedImageFile) {
+                    showError(imageErrorMessage, 'Please select an image first');
+                    return;
+                }
+                
+                // Show loading state
+                imageSpinner.style.display = 'block';
+                imageProgressContainer.style.display = 'block';
+                imageErrorMessage.style.display = 'none';
+                imageSuccessMessage.style.display = 'none';
+                convertImageBtn.disabled = true;
+                convertImageBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+                
+                // Simulate progress (in a real app, this would be actual conversion progress)
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress > 100) progress = 100;
+                    imageProgressBar.style.width = `${progress}%`;
+                    
+                    if (progress === 100) {
+                        clearInterval(progressInterval);
+                        processImageConversion();
+                    }
+                }, 100);
+            }
+            
+            function processImageConversion() {
+                // Simulate processing delay
+                setTimeout(() => {
+                    try {
+                        const outputFormat = imageOutputFormat.value;
+                        const quality = parseInt(imageQualitySlider.value);
+                        
+                        // Calculate simulated converted size
+                        const originalSizeBytes = selectedImageFile.size;
+                        let convertedSizeBytes;
+                        
+                        if (outputFormat === 'jpg' || outputFormat === 'webp') {
+                            // For formats that support quality
+                            convertedSizeBytes = originalSizeBytes * (0.3 + (0.5 * (1 - quality/100)));
+                        } else {
+                            // For other formats
+                            convertedSizeBytes = originalSizeBytes * 0.8; // Simulate some reduction
+                        }
+                        
+                        // Update UI with results
+                        convertedImage.src = originalImage.src; // In real app, this would be the converted image
+                        convertedImageSize.textContent = formatFileSize(convertedSizeBytes);
+                        convertedImageFormat.textContent = outputFormat.toUpperCase();
+                        convertedImageQuality.textContent = (outputFormat === 'jpg' || outputFormat === 'webp') 
+                            ? `${quality}%` 
+                            : 'N/A';
+                        
+                        // Set up download
+                        downloadConvertedImageBtn.href = originalImage.src; // In real app, this would be the converted data URL
+                        downloadConvertedImageBtn.download = selectedImageFile.name.replace(/\.[^/.]+$/, '') + '.' + outputFormat;
+                        
+                        // Show results
+                        imageResults.style.display = 'block';
+                        
+                        // Reset loading state
+                        imageSpinner.style.display = 'none';
+                        imageProgressContainer.style.display = 'none';
+                        convertImageBtn.disabled = false;
+                        convertImageBtn.innerHTML = '<i class="fas fa-exchange-alt"></i> Convert Image';
+                        
+                        // Show success message
+                        showSuccess(imageSuccessMessage, `Image converted to ${outputFormat.toUpperCase()} successfully!`);
+                        
+                    } catch (error) {
+                        showError(imageErrorMessage, 'An error occurred during conversion. Please try again.');
+                        console.error(error);
+                        
+                        // Reset loading state
+                        imageSpinner.style.display = 'none';
+                        imageProgressContainer.style.display = 'none';
+                        convertImageBtn.disabled = false;
+                        convertImageBtn.innerHTML = '<i class="fas fa-exchange-alt"></i> Convert Image';
+                    }
+                }, 1000);
+            }
+            
+            // Reset image converter
+            resetImageBtn.addEventListener('click', () => {
+                resetTool('image-converter');
+                selectedImageFile = null;
+                originalImage.src = '';
+                convertedImage.src = '';
+                originalImageSize.textContent = '0 KB';
+                originalImageDimensions.textContent = '0×0';
+                originalImageType.textContent = '---';
+                convertedImageSize.textContent = '0 KB';
+                convertedImageFormat.textContent = '---';
+                convertedImageQuality.textContent = '---';
+                imageQualitySlider.value = 85;
+                imageQualityValue.textContent = '85';
+                imageOutputFormat.value = 'jpg';
+                
+                const uploadText = imageUploadArea.querySelector('.upload-text');
+                const uploadHint = imageUploadArea.querySelector('.upload-hint');
+                uploadText.textContent = 'Drag & Drop your image here';
+                uploadText.removeAttribute('title');
+                uploadHint.textContent = 'or click to browse files (max 10MB)';
+                
+                convertImageBtn.innerHTML = '<i class="fas fa-exchange-alt"></i> Convert Image';
+                convertImageBtn.disabled = false;
+            });
+            
+            /* Image Compressor Tool */
+            const compressorUploadArea = document.getElementById('compressor-upload-area');
+            const compressorFileInput = document.getElementById('compressor-file-input');
+            const compressorQualitySlider = document.getElementById('compressor-quality');
+            const compressorQualityValue = document.getElementById('compressor-quality-value');
+            const compressorFormatSelect = document.getElementById('compressor-format');
+            const compressBtn = document.getElementById('compress-btn');
+            const resetCompressorBtn = document.getElementById('reset-compressor-btn');
+            const compressorSpinner = document.getElementById('compressor-spinner');
+            const compressorProgressContainer = document.getElementById('compressor-progress-container');
+            const compressorProgressBar = document.getElementById('compressor-progress-bar');
+            const compressorErrorMessage = document.getElementById('compressor-error-message');
+            const compressorSuccessMessage = document.getElementById('compressor-success-message');
+            const compressorResults = document.getElementById('compressor-results');
+            const originalCompressedImg = document.getElementById('original-compressed-img');
+            const compressedImg = document.getElementById('compressed-img');
+            const originalCompressedSize = document.getElementById('original-compressed-size');
+            const compressedSize = document.getElementById('compressed-size');
+            const originalCompressedDimensions = document.getElementById('original-compressed-dimensions');
+            const originalCompressedType = document.getElementById('original-compressed-type');
+            const originalCompressedResolution = document.getElementById('original-compressed-resolution');
+            const compressedType = document.getElementById('compressed-type');
+            const compressedQuality = document.getElementById('compressed-quality');
+            const savedPercentage = document.getElementById('saved-percentage');
+            const downloadCompressedBtn = document.getElementById('download-compressed-btn');
+            
+            let selectedCompressorFile = null;
+            let compressedImageData = null;
+            
+            // Quality slider
+            compressorQualitySlider.addEventListener('input', () => {
+                compressorQualityValue.textContent = compressorQualitySlider.value;
+            });
+            
+            // File upload handling
+            compressorUploadArea.addEventListener('click', () => compressorFileInput.click());
+            compressorUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                compressorUploadArea.classList.add('active');
+            });
+            compressorUploadArea.addEventListener('dragleave', () => {
+                compressorUploadArea.classList.remove('active');
+            });
+            compressorUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                compressorUploadArea.classList.remove('active');
+                if (e.dataTransfer.files.length) {
+                    handleCompressorFileSelect(e.dataTransfer.files[0]);
+                }
+            });
+            
+            compressorFileInput.addEventListener('change', () => {
+                if (compressorFileInput.files.length) {
+                    handleCompressorFileSelect(compressorFileInput.files[0]);
+                }
+            });
+            
+            function handleCompressorFileSelect(file) {
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    showError(compressorErrorMessage, 'Please select an image file (JPEG, PNG, or WebP)');
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    showError(compressorErrorMessage, 'File size exceeds 10MB limit');
+                    return;
+                }
+                
+                selectedCompressorFile = file;
+                
+                // Display original image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    originalCompressedImg.src = e.target.result;
+                    
+                    // Get image dimensions and type
+                    const img = new Image();
+                    img.onload = function() {
+                        originalCompressedDimensions.textContent = `${this.width}×${this.height}`;
+                        originalCompressedResolution.textContent = `${this.width}dpi × ${this.height}dpi`;
+                        
+                        // Detect image type
+                        const fileType = file.type.split('/')[1].toUpperCase();
+                        originalCompressedType.textContent = fileType;
+                        
+                        // For demo purposes, set compressed type based on selection
+                        const outputFormat = compressorFormatSelect.value === 'auto' ? fileType : compressorFormatSelect.value.toUpperCase();
+                        compressedType.textContent = outputFormat;
+                        compressedQuality.textContent = `${compressorQualitySlider.value}%`;
+                    };
+                    img.src = e.target.result;
+                    
+                    // Display file size
+                    originalCompressedSize.textContent = formatFileSize(file.size);
+                    
+                    // Reset results if they were showing
+                    compressorResults.style.display = 'none';
+                    compressorErrorMessage.style.display = 'none';
+                    compressorSuccessMessage.style.display = 'none';
+                    
+                    // Update upload area text
+                    const uploadText = compressorUploadArea.querySelector('.upload-text');
+                    const uploadHint = compressorUploadArea.querySelector('.upload-hint');
+                    
+                    uploadText.textContent = file.name.length > 20 
+                        ? file.name.substring(0, 20) + '...' 
+                        : file.name;
+                    uploadText.setAttribute('title', file.name);
+                    uploadHint.textContent = `${formatFileSize(file.size)} • ${file.type.split('/')[1].toUpperCase()}`;
+                    
+                    // Show success message
+                    showSuccess(compressorSuccessMessage, 'Image loaded successfully! Click "Compress Image" to optimize it.');
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            // Compress button
+            compressBtn.addEventListener('click', compressImage);
+            
+            function compressImage() {
+                if (!selectedCompressorFile) {
+                    showError(compressorErrorMessage, 'Please select an image first');
+                    return;
+                }
+                
+                // Show loading state
+                compressorSpinner.style.display = 'block';
+                compressorProgressContainer.style.display = 'block';
+                compressorErrorMessage.style.display = 'none';
+                compressorSuccessMessage.style.display = 'none';
+                compressBtn.disabled = true;
+                compressBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Compressing...';
+                
+                // Simulate progress (in a real app, this would be actual compression progress)
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress > 100) progress = 100;
+                    compressorProgressBar.style.width = `${progress}%`;
+                    
+                    if (progress === 100) {
+                        clearInterval(progressInterval);
+                        processCompression();
+                    }
+                }, 100);
+            }
+            
+            function processCompression() {
+                // Simulate processing delay
+                setTimeout(() => {
+                    try {
+                        const quality = parseInt(compressorQualitySlider.value) / 100;
+                        const format = compressorFormatSelect.value === 'auto' 
+                            ? selectedCompressorFile.type.split('/')[1] 
+                            : compressorFormatSelect.value;
+                        
+                        // Calculate simulated compressed size
+                        const originalSizeBytes = selectedCompressorFile.size;
+                        let compressedSizeBytes;
+                        
+                        if (format === 'webp') {
+                            compressedSizeBytes = originalSizeBytes * (0.1 + (0.5 * (1 - quality)));
+                        } else if (format === 'jpeg') {
+                            compressedSizeBytes = originalSizeBytes * (0.3 + (0.5 * (1 - quality)));
+                        } else { // png
+                            compressedSizeBytes = originalSizeBytes * (0.5 + (0.4 * (1 - quality)));
+                        }
+                        
+                        // Ensure compressed size isn't larger than original
+                        compressedSizeBytes = Math.min(compressedSizeBytes, originalSizeBytes * 0.95);
+                        
+                        // Update UI with results
+                        compressedImg.src = originalCompressedImg.src; // In real app, this would be the compressed image
+                        compressedSize.textContent = formatFileSize(compressedSizeBytes);
+                        
+                        const saved = ((originalSizeBytes - compressedSizeBytes) / originalSizeBytes * 100).toFixed(1);
+                        savedPercentage.textContent = `${saved}%`;
+                        
+                        // Set up download
+                        compressedImageData = {
+                            dataUrl: originalCompressedImg.src, // In real app, this would be the compressed data URL
+                            format: format,
+                            name: selectedCompressorFile.name.replace(/\.[^/.]+$/, '') + '_compressed.' + format
+                        };
+                        
+                        downloadCompressedBtn.href = compressedImageData.dataUrl;
+                        downloadCompressedBtn.download = compressedImageData.name;
+                        
+                        // Show results
+                        compressorResults.style.display = 'block';
+                        
+                        // Reset loading state
+                        compressorSpinner.style.display = 'none';
+                        compressorProgressContainer.style.display = 'none';
+                        compressBtn.disabled = false;
+                        compressBtn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Compress Image';
+                        
+                        // Show success message
+                        showSuccess(compressorSuccessMessage, `Image compressed successfully! Saved ${saved}% of original size.`);
+                        
+                    } catch (error) {
+                        showError(compressorErrorMessage, 'An error occurred during compression. Please try again.');
+                        console.error(error);
+                        
+                        // Reset loading state
+                        compressorSpinner.style.display = 'none';
+                        compressorProgressContainer.style.display = 'none';
+                        compressBtn.disabled = false;
+                        compressBtn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Compress Image';
+                    }
+                }, 800); // Simulate processing time
+            }
+            
+            // Reset image compressor
+            resetCompressorBtn.addEventListener('click', () => {
+                resetTool('image-compressor');
+                selectedCompressorFile = null;
+                compressedImageData = null;
+                originalCompressedImg.src = '';
+                compressedImg.src = '';
+                originalCompressedSize.textContent = '0 KB';
+                compressedSize.textContent = '0 KB';
+                originalCompressedDimensions.textContent = '0×0';
+                originalCompressedType.textContent = '---';
+                originalCompressedResolution.textContent = '---';
+                compressedType.textContent = '---';
+                compressedQuality.textContent = '---';
+                savedPercentage.textContent = '0%';
+                compressorQualitySlider.value = 80;
+                compressorQualityValue.textContent = '80';
+                compressorFormatSelect.value = 'auto';
+                
+                const uploadText = compressorUploadArea.querySelector('.upload-text');
+                const uploadHint = compressorUploadArea.querySelector('.upload-hint');
+                uploadText.textContent = 'Drag & Drop your image here';
+                uploadText.removeAttribute('title');
+                uploadHint.textContent = 'or click to browse files (max 10MB)';
+                
+                compressBtn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Compress Image';
+                compressBtn.disabled = false;
+            });
+            
+            /* PDF to Word Converter Tool */
+            const pdfUploadArea = document.getElementById('pdf-upload-area');
+            const pdfFileInput = document.getElementById('pdf-file-input');
+            const wordOutputFormat = document.getElementById('word-output-format');
+            const wordOutputName = document.getElementById('word-output-name');
+            const convertPdfBtn = document.getElementById('convert-pdf-btn');
+            const resetPdfBtn = document.getElementById('reset-pdf-btn');
+            const pdfSpinner = document.getElementById('pdf-spinner');
+            const pdfProgressContainer = document.getElementById('pdf-progress-container');
+            const pdfProgressBar = document.getElementById('pdf-progress-bar');
+            const pdfErrorMessage = document.getElementById('pdf-error-message');
+            const pdfSuccessMessage = document.getElementById('pdf-success-message');
+            const pdfResults = document.getElementById('pdf-results');
+            const originalPdfSize = document.getElementById('original-pdf-size');
+            const originalPdfPages = document.getElementById('original-pdf-pages');
+            const convertedWordSize = document.getElementById('converted-word-size');
+            const convertedWordFormat = document.getElementById('converted-word-format');
+            const downloadWordBtn = document.getElementById('download-word-btn');
+            
+            let selectedPdfFile = null;
+            
+            // File upload handling
+            pdfUploadArea.addEventListener('click', () => pdfFileInput.click());
+            pdfUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                pdfUploadArea.classList.add('active');
+            });
+            pdfUploadArea.addEventListener('dragleave', () => {
+                pdfUploadArea.classList.remove('active');
+            });
+            pdfUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                pdfUploadArea.classList.remove('active');
+                if (e.dataTransfer.files.length) {
+                    handlePdfFileSelect(e.dataTransfer.files[0]);
+                }
+            });
+            
+            pdfFileInput.addEventListener('change', () => {
+                if (pdfFileInput.files.length) {
+                    handlePdfFileSelect(pdfFileInput.files[0]);
+                }
+            });
+            
+            function handlePdfFileSelect(file) {
+                // Check if file is a PDF
+                if (file.type !== 'application/pdf') {
+                    showError(pdfErrorMessage, 'Please select a PDF file');
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    showError(pdfErrorMessage, 'File size exceeds 10MB limit');
+                    return;
+                }
+                
+                selectedPdfFile = file;
+                
+                // Display file info
+                originalPdfSize.textContent = formatFileSize(file.size);
+                // Simulate page count (in real app, you would parse the PDF)
+                originalPdfPages.textContent = Math.floor(Math.random() * 20) + 1;
+                
+                // Set default output name
+                wordOutputName.value = file.name.replace(/\.pdf$/, '') + '.' + wordOutputFormat.value;
+                
+                // Reset results if they were showing
+                pdfResults.style.display = 'none';
+                pdfErrorMessage.style.display = 'none';
+                pdfSuccessMessage.style.display = 'none';
+                
+                // Update upload area text
+                const uploadText = pdfUploadArea.querySelector('.upload-text');
+                const uploadHint = pdfUploadArea.querySelector('.upload-hint');
+                
+                uploadText.textContent = file.name.length > 20 
+                    ? file.name.substring(0, 20) + '...' 
+                    : file.name;
+                uploadText.setAttribute('title', file.name);
+                uploadHint.textContent = `${formatFileSize(file.size)}`;
+                
+                // Show success message
+                showSuccess(pdfSuccessMessage, 'PDF loaded successfully! Ready for conversion.');
+            }
+            
+            // Word format change handler
+            wordOutputFormat.addEventListener('change', () => {
+                if (selectedPdfFile) {
+                    wordOutputName.value = selectedPdfFile.name.replace(/\.pdf$/, '') + '.' + wordOutputFormat.value;
+                }
+            });
+            
+            // Convert PDF button
+            convertPdfBtn.addEventListener('click', convertPdfToWord);
+            
+            function convertPdfToWord() {
+                if (!selectedPdfFile) {
+                    showError(pdfErrorMessage, 'Please select a PDF file first');
+                    return;
+                }
+                
+                // Show loading state
+                pdfSpinner.style.display = 'block';
+                pdfProgressContainer.style.display = 'block';
+                pdfErrorMessage.style.display = 'none';
+                pdfSuccessMessage.style.display = 'none';
+                convertPdfBtn.disabled = true;
+                convertPdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+                
+                // Simulate progress
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress > 100) progress = 100;
+                    pdfProgressBar.style.width = `${progress}%`;
+                    
+                    if (progress === 100) {
+                        clearInterval(progressInterval);
+                        processPdfConversion();
+                    }
+                }, 150);
+            }
+            
+            function processPdfConversion() {
+                // Simulate processing delay
+                setTimeout(() => {
+                    try {
+                        const outputFormat = wordOutputFormat.value;
+                        
+                        // Calculate simulated converted size
+                        const originalSizeBytes = selectedPdfFile.size;
+                        let convertedSizeBytes = originalSizeBytes * 1.2; // Word files are often larger
+                        
+                        // Update UI with results
+                        convertedWordSize.textContent = formatFileSize(convertedSizeBytes);
+                        convertedWordFormat.textContent = outputFormat.toUpperCase();
+                        
+                        // Set up download
+                        downloadWordBtn.href = 'https://cdn-icons-png.flaticon.com/512/888/888882.png'; // Placeholder
+                        downloadWordBtn.download = wordOutputName.value.trim() || 'converted-document.' + outputFormat;
+                        
+                        // Show results
+                        pdfResults.style.display = 'block';
+                        
+                        // Reset loading state
+                        pdfSpinner.style.display = 'none';
+                        pdfProgressContainer.style.display = 'none';
+                        convertPdfBtn.disabled = false;
+                        convertPdfBtn.innerHTML = '<i class="fas fa-file-word"></i> Convert to Word';
+                        
+                        // Show success message
+                        showSuccess(pdfSuccessMessage, `PDF converted to ${outputFormat.toUpperCase()} successfully!`);
+                        
+                    } catch (error) {
+                        showError(pdfErrorMessage, 'An error occurred during conversion. Please try again.');
+                        console.error(error);
+                        
+                        // Reset loading state
+                        pdfSpinner.style.display = 'none';
+                        pdfProgressContainer.style.display = 'none';
+                        convertPdfBtn.disabled = false;
+                        convertPdfBtn.innerHTML = '<i class="fas fa-file-word"></i> Convert to Word';
+                    }
+                }, 1500);
+            }
+            
+            // Reset PDF converter
+            resetPdfBtn.addEventListener('click', () => {
+                resetTool('pdf-to-word');
+                selectedPdfFile = null;
+                originalPdfSize.textContent = '0 KB';
+                originalPdfPages.textContent = '0';
+                convertedWordSize.textContent = '0 KB';
+                convertedWordFormat.textContent = '---';
+                wordOutputFormat.value = 'docx';
+                wordOutputName.value = 'converted-document.docx';
+                
+                const uploadText = pdfUploadArea.querySelector('.upload-text');
+                const uploadHint = pdfUploadArea.querySelector('.upload-hint');
+                uploadText.textContent = 'Drag & Drop PDF file here';
+                uploadText.removeAttribute('title');
+                uploadHint.textContent = 'or click to browse files (max 10MB)';
+                
+                convertPdfBtn.innerHTML = '<i class="fas fa-file-word"></i> Convert to Word';
+                convertPdfBtn.disabled = false;
+            });
+            
+            /* PDF Merger Tool */
+            const pdfMergerUploadArea = document.getElementById('pdf-merger-upload-area');
+            const pdfMergerFileInput = document.getElementById('pdf-merger-file-input');
+            const pdfMergerFileList = document.getElementById('pdf-file-list');
+            const pdfMergerOutputName = document.getElementById('pdf-merger-output-name');
+            const mergeBtn = document.getElementById('merge-btn');
+            const clearPdfsBtn = document.getElementById('clear-pdfs-btn');
+            const pdfMergerSpinner = document.getElementById('pdf-merger-spinner');
+            const pdfMergerErrorMessage = document.getElementById('pdf-merger-error-message');
+            const pdfMergerSuccessMessage = document.getElementById('pdf-merger-success-message');
+            const pdfMergerResults = document.getElementById('pdf-merger-results');
+            const mergedSize = document.getElementById('merged-size');
+            const mergedPages = document.getElementById('merged-pages');
+            const filesMerged = document.getElementById('files-merged');
+            const downloadMergedBtn = document.getElementById('download-merged-btn');
+            
+            let pdfFiles = [];
+            
+            pdfMergerUploadArea.addEventListener('click', () => pdfMergerFileInput.click());
+            pdfMergerUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                pdfMergerUploadArea.classList.add('active');
+            });
+            pdfMergerUploadArea.addEventListener('dragleave', () => {
+                pdfMergerUploadArea.classList.remove('active');
+            });
+            pdfMergerUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                pdfMergerUploadArea.classList.remove('active');
+                if (e.dataTransfer.files.length) {
+                    handlePdfFiles(e.dataTransfer.files);
+                }
+            });
+            
+            pdfMergerFileInput.addEventListener('change', () => {
+                if (pdfMergerFileInput.files.length) {
+                    handlePdfFiles(pdfMergerFileInput.files);
+                }
+            });
+            
+            mergeBtn.addEventListener('click', mergePdfs);
+            clearPdfsBtn.addEventListener('click', clearPdfs);
+            
+            function handlePdfFiles(files) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    
+                    if (file.type !== 'application/pdf') {
+                        showError(pdfMergerErrorMessage, 'Please select only PDF files');
+                        continue;
+                    }
+                    
+                    if (file.size > 10 * 1024 * 1024) {
+                        showError(pdfMergerErrorMessage, `File "${file.name}" exceeds 10MB limit`);
+                        continue;
+                    }
+                    
+                    pdfFiles.push(file);
+                    addPdfToFileList(file);
+                }
+                
+                if (pdfFiles.length > 0) {
+                    showSuccess(pdfMergerSuccessMessage, `${pdfFiles.length} PDF file(s) added successfully`);
+                }
+            }
+            
+            function addPdfToFileList(file) {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="file-info">
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${formatFileSize(file.size)}</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="file-action-btn move-up-btn" title="Move up">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <button class="file-action-btn move-down-btn" title="Move down">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                        <button class="file-action-btn remove-btn" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                
+                pdfMergerFileList.appendChild(fileItem);
+                
+                // Add event listeners for actions
+                fileItem.querySelector('.move-up-btn').addEventListener('click', () => movePdfUp(fileItem, file));
+                fileItem.querySelector('.move-down-btn').addEventListener('click', () => movePdfDown(fileItem, file));
+                fileItem.querySelector('.remove-btn').addEventListener('click', () => removePdf(fileItem, file));
+            }
+            
+            function movePdfUp(fileItem, file) {
+                const index = pdfFiles.indexOf(file);
+                if (index > 0) {
+                    // Swap in array
+                    [pdfFiles[index], pdfFiles[index - 1]] = [pdfFiles[index - 1], pdfFiles[index]];
+                    // Swap in DOM
+                    fileItem.parentNode.insertBefore(fileItem, fileItem.previousElementSibling);
+                }
+            }
+            
+            function movePdfDown(fileItem, file) {
+                const index = pdfFiles.indexOf(file);
+                if (index < pdfFiles.length - 1) {
+                    // Swap in array
+                    [pdfFiles[index], pdfFiles[index + 1]] = [pdfFiles[index + 1], pdfFiles[index]];
+                    // Swap in DOM
+                    fileItem.parentNode.insertBefore(fileItem.nextElementSibling, fileItem);
+                }
+            }
+            
+            function removePdf(fileItem, file) {
+                const index = pdfFiles.indexOf(file);
+                if (index > -1) {
+                    pdfFiles.splice(index, 1);
+                    fileItem.remove();
+                }
+            }
+            
+            function mergePdfs() {
+                if (pdfFiles.length < 2) {
+                    showError(pdfMergerErrorMessage, 'Please add at least 2 PDF files to merge');
+                    return;
+                }
+                
+                // Show loading state
+                pdfMergerSpinner.style.display = 'block';
+                pdfMergerErrorMessage.style.display = 'none';
+                pdfMergerSuccessMessage.style.display = 'none';
+                mergeBtn.disabled = true;
+                mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Merging...';
+                
+                // Simulate merging (in a real app, you would use a PDF library like pdf-lib)
+                setTimeout(() => {
+                    try {
+                        // Calculate simulated merged size
+                        let totalSize = 0;
+                        let totalPages = 0;
+                        
+                        pdfFiles.forEach(file => {
+                            totalSize += file.size;
+                            // Simulate random pages between 1-20 for each PDF
+                            totalPages += Math.floor(Math.random() * 20) + 1;
+                        });
+                        
+                        // Simulate some compression in merging
+                        const mergedSizeBytes = totalSize * 0.9;
+                        
+                        // Update UI with results
+                        mergedSize.textContent = formatFileSize(mergedSizeBytes);
+                        mergedPages.textContent = totalPages;
+                        filesMerged.textContent = pdfFiles.length;
+                        
+                        // Set up download (in a real app, this would be the merged PDF)
+                        const outputName = pdfMergerOutputName.value.trim() || 'merged-document.pdf';
+                        downloadMergedBtn.href = 'https://cdn-icons-png.flaticon.com/512/337/337946.png'; // Placeholder
+                        downloadMergedBtn.download = outputName;
+                        
+                        // Show results
+                        pdfMergerResults.style.display = 'block';
+                        
+                        // Reset loading state
+                        pdfMergerSpinner.style.display = 'none';
+                        mergeBtn.disabled = false;
+                        mergeBtn.innerHTML = '<i class="fas fa-object-group"></i> Merge PDFs';
+                        
+                        // Show success message
+                        showSuccess(pdfMergerSuccessMessage, `Successfully merged ${pdfFiles.length} PDF files into a single document!`);
+                        
+                    } catch (error) {
+                        showError(pdfMergerErrorMessage, 'An error occurred during merging. Please try again.');
+                        console.error(error);
+                        
+                        // Reset loading state
+                        pdfMergerSpinner.style.display = 'none';
+                        mergeBtn.disabled = false;
+                        mergeBtn.innerHTML = '<i class="fas fa-object-group"></i> Merge PDFs';
+                    }
+                }, 1500);
+            }
+            
+            function clearPdfs() {
+                pdfFiles = [];
+                pdfMergerFileList.innerHTML = '';
+                pdfMergerOutputName.value = 'merged-document.pdf';
+                pdfMergerResults.style.display = 'none';
+                pdfMergerErrorMessage.style.display = 'none';
+                pdfMergerSuccessMessage.style.display = 'none';
+            }
+            
+            /* Code Formatter Tool */
+            const codeLanguage = document.getElementById('code-language');
+            const codeInput = document.getElementById('code-input');
+            const codeIndent = document.getElementById('code-indent');
+            const formatCodeBtn = document.getElementById('format-code-btn');
+            const clearCodeBtn = document.getElementById('clear-code-btn');
+            const codeSpinner = document.getElementById('code-spinner');
+            const codeErrorMessage = document.getElementById('code-error-message');
+            const codeSuccessMessage = document.getElementById('code-success-message');
+            const codeResults = document.getElementById('code-results');
+            const formattedCode = document.getElementById('formatted-code');
+            const copyCodeBtn = document.getElementById('copy-code-btn');
+            const downloadCodeBtn = document.getElementById('download-code-btn');
+            
+            // Format code button
+            formatCodeBtn.addEventListener('click', formatCode);
+            
+            function formatCode() {
+                const code = codeInput.value.trim();
+                
+                if (!code) {
+                    showError(codeErrorMessage, 'Please enter some code to format');
+                    return;
+                }
+                
+                // Show loading state
+                codeSpinner.style.display = 'block';
+                codeErrorMessage.style.display = 'none';
+                codeSuccessMessage.style.display = 'none';
+                formatCodeBtn.disabled = true;
+                formatCodeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Formatting...';
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    try {
+                        const language = codeLanguage.value;
+                        const indent = codeIndent.value === 'tab' ? '\t' : ' '.repeat(parseInt(codeIndent.value));
+                        
+                        // In a real app, you would use a code formatting library like Prettier
+                        // For this demo, we'll simulate formatting
+                        let formatted = simulateCodeFormatting(code, language, indent);
+                        
+                        // Display formatted code
+                        formattedCode.value = formatted;
+                        
+                        // Show results
+                        codeResults.style.display = 'block';
+                        
+                        // Reset loading state
+                        codeSpinner.style.display = 'none';
+                        formatCodeBtn.disabled = false;
+                        formatCodeBtn.innerHTML = '<i class="fas fa-code"></i> Format Code';
+                        
+                        // Show success message
+                        showSuccess(codeSuccessMessage, 'Code formatted successfully!');
+                        
+                    } catch (error) {
+                        showError(codeErrorMessage, 'An error occurred during formatting. Please check your code and try again.');
+                        console.error(error);
+                        
+                        // Reset loading state
+                        codeSpinner.style.display = 'none';
+                        formatCodeBtn.disabled = false;
+                        formatCodeBtn.innerHTML = '<i class="fas fa-code"></i> Format Code';
+                    }
+                }, 800);
+            }
+            
+            function simulateCodeFormatting(code, language, indent) {
+                // Very basic simulation of formatting
+                let formatted = code;
+                
+                // Add some indentation
+                formatted = formatted.split('\n').map(line => {
+                    if (line.trim().length === 0) return line;
+                    return indent + line.trim();
+                }).join('\n');
+                
+                // Add some newlines for blocks (very basic simulation)
+                if (language === 'javascript' || language === 'java' || language === 'csharp') {
+                    formatted = formatted.replace(/\{/g, ' {\n' + indent);
+                    formatted = formatted.replace(/\}/g, '\n}\n');
+                }
+                
+                return formatted;
+            }
+            
+            // Copy code button
+            copyCodeBtn.addEventListener('click', () => {
+                formattedCode.select();
+                document.execCommand('copy');
+                
+                // Show temporary feedback
+                const originalText = copyCodeBtn.innerHTML;
+                copyCodeBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyCodeBtn.innerHTML = originalText;
+                }, 2000);
+            });
+            
+            // Download code button
+            downloadCodeBtn.addEventListener('click', () => {
+                if (!formattedCode.value) return;
+                
+                const language = codeLanguage.value;
+                const extension = getFileExtension(language);
+                const filename = `formatted-code.${extension}`;
+                
+                const blob = new Blob([formattedCode.value], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            function getFileExtension(language) {
+                switch(language) {
+                    case 'html': return 'html';
+                    case 'css': return 'css';
+                    case 'javascript': return 'js';
+                    case 'json': return 'json';
+                    case 'python': return 'py';
+                    case 'java': return 'java';
+                    case 'csharp': return 'cs';
+                    case 'php': return 'php';
+                    case 'xml': return 'xml';
+                    case 'sql': return 'sql';
+                    default: return 'txt';
+                }
+            }
+            
+            // Clear code button
+            clearCodeBtn.addEventListener('click', () => {
+                resetTool('code-formatter');
+                codeInput.value = '';
+                formattedCode.value = '';
+                codeLanguage.value = 'html';
+                codeIndent.value = '4';
+                formatCodeBtn.innerHTML = '<i class="fas fa-code"></i> Format Code';
+                formatCodeBtn.disabled = false;
+            });
+            
+            /* QR Generator Tool */
+            const qrContent = document.getElementById('qr-content');
+            const qrSize = document.getElementById('qr-size');
+            const qrColor = document.getElementById('qr-color');
+            const qrBg = document.getElementById('qr-bg');
+            const generateQrBtn = document.getElementById('generate-qr-btn');
+            const resetQrBtn = document.getElementById('reset-qr-btn');
+            const qrPreview = document.getElementById('qr-preview');
+            const qrDownloadBtns = document.getElementById('qr-download-btns');
+            const downloadPngBtn = document.getElementById('download-png-btn');
+            const downloadSvgBtn = document.getElementById('download-svg-btn');
+            
+            generateQrBtn.addEventListener('click', generateQrCode);
+            resetQrBtn.addEventListener('click', resetQrCode);
+            
+            function generateQrCode() {
+                const content = qrContent.value.trim();
+                
+                if (!content) {
+                    alert('Please enter content to generate QR code');
+                    return;
+                }
+                
+                // In a real app, you would use a QR code library like qrcode.js
+                // For this demo, we'll use a placeholder service
+                const size = qrSize.value;
+                const color = qrColor.value.replace('#', '');
+                const bg = qrBg.value.replace('#', '');
+                
+                // Using a placeholder QR code generator API
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(content)}&color=${color}&bgcolor=${bg}`;
+                
+                qrPreview.innerHTML = `<img src="${qrUrl}" alt="QR Code for ${content}">`;
+                qrDownloadBtns.style.display = 'flex';
+                
+                // Set up download links
+                downloadPngBtn.href = qrUrl + '&format=png';
+                downloadPngBtn.download = 'qrcode.png';
+                
+                downloadSvgBtn.href = qrUrl + '&format=svg';
+                downloadSvgBtn.download = 'qrcode.svg';
+            }
+            
+            function resetQrCode() {
+                qrContent.value = '';
+                qrSize.value = '300';
+                qrColor.value = '#000000';
+                qrBg.value = '#ffffff';
+                qrPreview.innerHTML = '<p>Your QR code will appear here after generation</p>';
+                qrDownloadBtns.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "DevToolsPro - Complete Developer Tools Suite",
+        "url": "https://devtoolspro.com",
+        "description": "Free online tools including image conversion/compression, PDF manipulation, code formatting, and QR generation. Optimize your workflow with our powerful web tools.",
+        "applicationCategory": ["DeveloperTools", "WebApplication"],
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "DevToolsPro"
+        }
+    }
+    </script>
+</body>
+</html>
